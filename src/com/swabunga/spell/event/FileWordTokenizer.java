@@ -1,92 +1,57 @@
-/*
-Jazzy - a Java library for Spell Checking
-Copyright (C) 2001 Mindaugas Idzelis
-Full text of license can be found in LICENSE.txt
-
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-*/
 package com.swabunga.spell.event;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
+import java.util.*;
+import java.io.*;
 
 /**
  * This class tokenizes a input file.
- *
  * <p>
- * Any takers to do this efficiently?? doesn't need to replace any words to
- * start with. I need this to get an idea of how quick the spell checker is.
- * </p>
+ * Any takers to do this efficiently?? Doesnt need to replace any words to start
+ * with . I need this to get an idea of how quick the spell checker is.
  */
-public class FileWordTokenizer extends AbstractWordTokenizer {
+public class FileWordTokenizer implements WordTokenizer {
 
-  //~ Instance/static variables ...............................................
+	public FileWordTokenizer(File inputFile) {
+	}
 
-//  private File inFile;
+	public boolean hasMoreWords() {
+		return false;
+	}
 
-  //~ Constructors ............................................................
+	public int getCurrentWordPosition() {
+		return 0;
+	}
 
-  /**
-   * Creates a new FileWordTokenizer object.
-   *
-   * @param inputFile the file to work upon
-   */
-  public FileWordTokenizer(File inputFile) {
-    super(stringValue(inputFile));
-  }
+	/**
+	 * Returns the current end word position in the text
+	 *
+	 */
+	public int getCurrentWordEnd() {
+		return 0;
+	}
 
-  /**
-   * Creates a new FileWordTokenizer object and associate a WordFinder to it's
-   * processing.
-   *
-   * @param inputFile the file to word upon.
-   * @param finder the specialize processing for words.
-   */
-  public FileWordTokenizer(File inputFile, WordFinder finder) {
-    super(finder);
-    finder.setText(stringValue(inputFile));
-  }
-  //~ Methods .................................................................
+	public String nextWord() {
+		return null;
+	}
 
-  /**
-   * Replaces the current word token
-   *
-   * @param s the new string
-   * @throws WordNotFoundException current word not yet set.
-   */
-  public void replaceWord(String s) {
-  }
+	public int getCurrentWordCount() {
+		return 0;
+	}
 
-  private static String stringValue(File inFile) {
-    File stringFile = inFile;
-    StringBuffer out = new StringBuffer("");
+	/** Replaces the current word token */
+	public void replaceWord(String newWord) {
+	}
 
-    try{
-      BufferedReader in = new BufferedReader(new FileReader(inFile));
-      char[] c = new char[100];
-      int count;
-      while ((count = in.read(c, 0, c.length)) != -1){
-         out.append(c,0,count);
-      }
-      in.close();
-    } catch(IOException e){
-      System.err.println("File input error trying to open " + inFile.toString() + " : " + e);
-    }
-    return out.toString();
-  }
+	/**
+	 * Returns the current text that is being tokenized (includes any changes that
+	 * have been made)
+	 */
+	public String getContext() {
+		return null;
+	}
+
+	/** returns true iif the current word is at the start of a sentance */
+	public boolean isNewSentance() {
+		return false;
+	}
 }

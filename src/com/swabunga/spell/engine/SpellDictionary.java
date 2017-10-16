@@ -1,27 +1,8 @@
-/*
- * put your module comment here
- * formatted with JxBeauty (c) johann.langhofer@nextra.at
- */
-
 package com.swabunga.spell.engine;
 
 import java.io.*;
 import java.util.*;
 
-/**
- * The SpellDictionary class holds the instance of the dictionary.
- * <p>
- * This class is thread safe. Derived classes should ensure that this preserved.
- * </p>
- * <p>
- * There are many open source dictionary files. For just a few see:
- * http://wordlist.sourceforge.net/
- * </p>
- * <p>
- * This dictionary class reads words one per line. Make sure that your word list
- * is formatted in this way (most are).
- * </p>
- */
 public class SpellDictionary {
 
 	/** The replace list is used in the getSuggestions method */

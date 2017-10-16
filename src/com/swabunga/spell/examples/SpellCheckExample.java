@@ -5,26 +5,25 @@ import java.util.*;
 import com.swabunga.spell.event.*;
 import com.swabunga.spell.engine.*;
 
-/**
- * This class shows an example of how to use the spell checking capability.
- *
- * @author Jason Height (jheight@chariot.net.au)
- */
 public class SpellCheckExample implements SpellCheckListener {
 
-	private static String dictFile = "C:\\Users\\administradorcito\\Documents\\JazzySrc0-2-1\\dict\\corpusMobyDick.txt";
+	private static String corpusRAE = "C:\\System\\Codes\\Java\\jazzy-1\\dict\\corpusRAE.txt";
+	private static String nHombres = "C:\\System\\Codes\\Java\\jazzy-1\\dict\\nombreH.txt";
+	private static String nMujeres = "C:\\System\\Codes\\Java\\jazzy-1\\dict\\nombreM.txt";
+	//private static String dictFile = "C:\\System\\Codes\\Java\\jazzy-1\\dict\\corpusRAE.txt";
 	private SpellChecker spellCheck = null;
 
 	public SpellCheckExample() {
 		try {
-			SpellDictionary dictionary = new SpellDictionary(new File(dictFile));
+			//SpellDictionary dictionary = new SpellDictionary(new File(corpusRAE));
+			SpellDictionary dictionary = new SpellDictionary(new File(nHombres));
 
 			spellCheck = new SpellChecker(dictionary);
 			spellCheck.addSpellCheckListener(this);
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
 			while (true) {
-				System.out.print("Enter text to spell check: ");
+				System.out.print("ORACIÓN A SER ANALIZADA: ");
 				String line = in.readLine();
 
 				if (line.length() <= 0)
@@ -39,12 +38,12 @@ public class SpellCheckExample implements SpellCheckListener {
 	public void spellingError(SpellCheckEvent event) {
 		List suggestions = event.getSuggestions();
 		if (suggestions.size() > 0) {
-			System.out.println("MISSPELT WORD: " + event.getInvalidWord());
+			System.out.println("PALABRA MAL ESCRITA: " + event.getInvalidWord());
 			for (Iterator suggestedWord = suggestions.iterator(); suggestedWord.hasNext();) {
-				System.out.println("Suggested Word: =" + suggestedWord.next());
+				System.out.println("SUGERENCIA: =" + suggestedWord.next());
 			}
 		}
-		// Null actions
+		// NINGUNA ACCION EN CASO DE ELSE
 	}
 
 	public static void main(String[] args) {

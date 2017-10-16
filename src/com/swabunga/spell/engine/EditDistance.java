@@ -3,10 +3,6 @@ package com.swabunga.spell.engine;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-/**
- * JMH Again, there is no need to have a global class matrix variable in this
- * class. I have removed it and made the getDistance static final
- */
 public class EditDistance {
 
 	public static Configuration config = Configuration.getConfiguration();

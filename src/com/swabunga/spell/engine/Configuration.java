@@ -2,10 +2,6 @@ package com.swabunga.spell.engine;
 
 import java.util.ResourceBundle;
 
-/**
- * @author aim4min
- *
- */
 public abstract class Configuration {
 
 	public static final String EDIT_DEL1 = "EDIT_DEL1";

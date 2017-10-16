@@ -8,14 +8,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
 
-/**
- * @author aim4min
- *
- *         To change this generated comment edit the template variable
- *         "typecomment": Window>Preferences>Java>Templates. To enable and
- *         disable the creation of type comments go to
- *         Window>Preferences>Java>Code Generation.
- */
 public class PropertyConfiguration extends Configuration {
 
 	public Properties prop;
@@ -28,27 +20,18 @@ public class PropertyConfiguration extends Configuration {
 			InputStream in = filename.openStream();
 			prop.load(in);
 		} catch (Exception e) {
-			System.out.println("Could not load Properties file :\n" + e);
+			System.out.println("No se pudieron cargar las configuraciones :\n" + e);
 		}
 	}
 
-	/**
-	 * @see com.swabunga.spell.engine.Configuration#getBoolean(String)
-	 */
 	public boolean getBoolean(String key) {
 		return Boolean.getBoolean(prop.getProperty(key));
 	}
 
-	/**
-	 * @see com.swabunga.spell.engine.Configuration#getInteger(String)
-	 */
 	public int getInteger(String key) {
 		return Integer.parseInt(prop.getProperty(key));
 	}
 
-	/**
-	 * @see com.swabunga.spell.engine.Configuration#setBoolean(String, boolean)
-	 */
 	public void setBoolean(String key, boolean value) {
 		String string = null;
 		if (value)
@@ -60,9 +43,6 @@ public class PropertyConfiguration extends Configuration {
 		save();
 	}
 
-	/**
-	 * @see com.swabunga.spell.engine.Configuration#setInteger(String, int)
-	 */
 	public void setInteger(String key, int value) {
 		prop.setProperty(key, Integer.toString(value));
 		save();

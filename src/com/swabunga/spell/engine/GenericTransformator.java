@@ -3,12 +3,6 @@ package com.swabunga.spell.engine;
 import java.io.*;
 import java.util.*;
 
-/**
- * A Generic implementation of a transformator takes an aspell phonetics file
- * and constructs some sort of transformationtable using the inner class Rule.
- *
- * @author Robert Gustavsson (robert@lindesign.se)
- */
 public class GenericTransformator implements Transformator {
 
 	public static final char STARTMULTI = '(';

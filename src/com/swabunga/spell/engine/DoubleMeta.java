@@ -1,22 +1,5 @@
-/* This class is based on Lawrence Phillips original c++ code for this class.
- * Found here: http://aspell.sourceforge.net/metaphone/
- *
- */
-
 package com.swabunga.spell.engine;
 
-/**
- * Double Meta class
- * <p>
- * Things that were changed: The alternate flag could be set to true but was
- * never checked so why bother with it. REMOVED Why was this class serializable?
- * The primary, in, length and last variables could be initialized and local to
- * the process method and references passed arround the appropriate methods. As
- * such there are no class variables and this class becomes firstly threadsafe
- * and secondly could be static final. The function call SlavoGermaic was called
- * repeatedly in the process function, it is now only called once.
- *
- */
 class DoubleMeta implements Transformator {
 
 	private static final String[] myList = { "GN", "KN", "PN", "WR", "PS", "" };
